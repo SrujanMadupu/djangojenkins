@@ -10,8 +10,12 @@ echo "done with mysql installation"
 echo "starting mysql server"
 systemctl start mysqld
 echo $?
+echo "creting virtual environment"
 python3 -m venv  $rootpath/jenk
+echo $?
+echo "Activating virtual env"
 source $rootpath/jenk/bin/activate
+echo $?
 pip3 install -r $rootpath/requirements.txt
 python3 $rootpath/manage.py runserver
 deactivate
