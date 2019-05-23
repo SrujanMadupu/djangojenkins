@@ -6,7 +6,10 @@ wget https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
 md5sum mysql80-community-release-el7-3.noarch.rpm
 rpm -ivh mysql80-community-release-el7-3.noarch.rpm
 yum -y --nogpgcheck install mysql-server
+echo "done with mysql installation"
+echo "starting mysql server"
 systemctl start mysqld
+echo $?
 python3 -m venv  $rootpath/jenk
 source $rootpath/jenk/bin/activate
 pip3 install -r $rootpath/requirements.txt
