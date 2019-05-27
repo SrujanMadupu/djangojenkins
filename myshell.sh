@@ -13,7 +13,7 @@ MYSQL_DATABASE='dummy'
 #rpm -ivh mysql80-community-release-el7-3.noarch.rpm
 #yum -y --nogpgcheck install mysql-server
 #service mysqld start
-systemctl service mysqld start
+systemctl start mysqld
 temppassword=cat /var/log/mysqld.log | grep "temporary password"|rev|cut -d: -f1|rev|sed 's/ //g' | tail -1
 spawn passwd mysql_secure_installation
 expect "Enter password for user root:"
