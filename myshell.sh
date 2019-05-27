@@ -1,22 +1,49 @@
 #! /bin/bash
+
 rootpath=/root/home/srujan/dj
-yum -y install python36
-yum -y install python36-pip
+#yum -y install python36
+#yum -y install python36-pip
+
+MYSQL_ROOT='root'
+MYSQL_ROOT_PASSWORD='Mobigo#123'
+MYSQL_DATABASE='dummy'
+# MySQL Setup
 wget https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
 md5sum mysql80-community-release-el7-3.noarch.rpm
 rpm -ivh mysql80-community-release-el7-3.noarch.rpm
 yum -y --nogpgcheck install mysql-server
-echo "done with mysql installation"
-echo "starting mysql server"
-systemctl start mysqld
+service mysqld start
+temppassword=cat /var/log/mysqld.log | grep "temporary password"|rev|cut -d: -f1|rev|sed 's/ //g' | tail -1
+spawn passwd mysql_secure_installation
+expect "Enter password for user root:"
+send $temppassword
+expect "New password:"
+send $MYSQL_ROOT_PASSWORD
+expect "Re-enter new password:"  
+send $MYSQL_ROOT_PASSWORD
+expect "Change the password for root ?"
+send "N"
+expect "Remove anonymous users? (Press y|Y for Yes, any other key for No) :"
+send "Y"
+expect "Disallow root login remotely? (Press y|Y for Yes, any other key for No) :"
+send "Y"
+expect "Remove test database and access to it? (Press y|Y for Yes, any other key for No) :"
+send "Y"
+expect "Reload privilege tables now? (Press y|Y for Yes, any other key for No) :"
+send "Y"
 echo $?
-echo "creting virtual environment"
-python3 -m venv  $rootpath/jenk
+
+echo "done with mysql installation and root user setup"
+echo "creating database dummy"
+mysql -u $MYSQL_ROOT -p$MYSQL_ROOT_PASSWORD -e "CREATE DATABASE $MYSQL_DATABASE"
 echo $?
-echo "Activating virtual env"
-source $rootpath/jenk/bin/activate
-echo $?
-pip3 install -r $rootpath/requirements.txt
-python3 $rootpath/manage.py runserver
-deactivate
+#echo "creting virtual environment"
+#python3 -m venv  $rootpath/jenk
+#echo $?
+#echo "Activating virtual env"
+#source $rootpath/jenk/bin/activate
+#echo $?
+#pip3 install -r $rootpath/requirements.txt
+#python3 $rootpath/manage.py runserver
+#deactivate
 
