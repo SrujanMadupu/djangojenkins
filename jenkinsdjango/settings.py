@@ -79,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'djjenkins',
         'USER':'root',
-        'PASSWORD': 'Mobigo#123',
+        'PASSWORD': '5Yf2i<>70!:t'#'Mobigo#123',
         'HOST':'127.0.0.1',
         'PORT':'3306'#'5432'
     }
