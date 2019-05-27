@@ -23,11 +23,11 @@ echo $tempPassword
 export<<END
 spawn passwd mysql_secure_installation
 expect "Enter password for user root:"
-send $tempPassword\r
+send $tempPassword
 expect "New password:"
-send $MYSQL_ROOT_PASSWORD\r
+send $MYSQL_ROOT_PASSWORD
 expect "Re-enter new password:"  
-send $MYSQL_ROOT_PASSWORD\r
+send $MYSQL_ROOT_PASSWORD
 expect "Change the password for root ?"
 send "N\r"
 expect "Remove anonymous users? (Press y|Y for Yes, any other key for No) :"
