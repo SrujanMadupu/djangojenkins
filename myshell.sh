@@ -49,6 +49,6 @@ echo "Activating virtual env"
 source $rootpath/jenk/bin/activate
 echo $?
 pip3 install -r $rootpath/requirements.txt
-python3 $rootpath/manage.py runserver
+python3 $rootpath/manage.py runserver &
 deactivate
 
