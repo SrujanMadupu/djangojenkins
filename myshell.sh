@@ -14,6 +14,7 @@ rpm -ivh mysql80-community-release-el7-3.noarch.rpm
 yum -y --nogpgcheck install mysql-server
 #service mysqld start
 echo "starting mysql server"
+sleep 5
 systemctl start mysqld
 echo $?
 tempPassword=`cat /var/log/mysqld.log | grep "temporary password"|rev|cut -d: -f1|rev|sed 's/ //g' | tail -1`
