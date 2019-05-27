@@ -16,7 +16,6 @@ yum -y --nogpgcheck install mysql-server
 echo "starting mysql server"
 sleep 5
 systemctl start mysqld
-echo $?
 tempPassword=`cat /var/log/mysqld.log | grep "temporary password"|rev|cut -d: -f1|rev|sed 's/ //g' | tail -1`
 export<<END
 spawn passwd mysql_secure_installation
