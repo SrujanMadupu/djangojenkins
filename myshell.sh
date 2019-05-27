@@ -9,15 +9,16 @@ MYSQL_ROOT='root'
 MYSQL_ROOT_PASSWORD='Mobigo#123'
 MYSQL_DATABASE='djjenkins'
 # MySQL Setup
-wget https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
-md5sum mysql80-community-release-el7-3.noarch.rpm
-rpm -ivh mysql80-community-release-el7-3.noarch.rpm
-yum -y --nogpgcheck install mysql-server
+#wget https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
+#md5sum mysql80-community-release-el7-3.noarch.rpm
+#rpm -ivh mysql80-community-release-el7-3.noarch.rpm
+#yum -y --nogpgcheck install mysql-server
 #service mysqld start
 echo "starting mysql server"
 sleep 5
 systemctl start mysqld
-tempPassword=`cat /var/log/mysqld.log | grep "temporary password"|rev|cut -d: -f1|rev|sed 's/ //g' | tail -1`
+tempPassword=`cat /var/log/mysqld.log | grep "temporary password"|rev|cut -d ' ' -f1|rev|sed 's/ //g' | tail -1`
+#`cat /var/log/mysqld.log | grep "temporary password"|rev|cut -d: -f1|rev|sed 's/ //g' | tail -1`
 echo $tempPassword
 export<<END
 spawn passwd mysql_secure_installation
