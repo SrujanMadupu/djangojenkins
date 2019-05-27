@@ -29,15 +29,15 @@ send $MYSQL_ROOT_PASSWORD
 expect "Re-enter new password:"  
 send $MYSQL_ROOT_PASSWORD
 expect "Change the password for root ?"
-send "N\r"
+send "N"
 expect "Remove anonymous users? (Press y|Y for Yes, any other key for No) :"
-send "Y\r"
+send "Y"
 expect "Disallow root login remotely? (Press y|Y for Yes, any other key for No) :"
-send "Y\r"
+send "Y"
 expect "Remove test database and access to it? (Press y|Y for Yes, any other key for No) :"
-send "Y\r"
+send "Y"
 expect "Reload privilege tables now? (Press y|Y for Yes, any other key for No) :"
-send "Y\r"
+send "Y"
 END
 echo $?
 
