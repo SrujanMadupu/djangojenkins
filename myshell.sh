@@ -6,7 +6,7 @@ yum -y install python36-pip
 yum -y install python36-devel
 
 MYSQL_ROOT='root'
-MYSQL_ROOT_PASSWORD='5Yf2i<>70!:t' #'Mobigo#123'
+MYSQL_ROOT_PASSWORD='Mobigo#123'
 MYSQL_DATABASE='djjenkins'
 # MySQL Setup
 #wget https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
@@ -20,6 +20,7 @@ systemctl start mysqld
 tempPassword=`cat /var/log/mysqld.log | grep "temporary password"|rev|cut -d ' ' -f1|rev|sed 's/ //g' | tail -1`
 #`cat /var/log/mysqld.log | grep "temporary password"|rev|cut -d: -f1|rev|sed 's/ //g' | tail -1`
 echo $tempPassword
+mysqladmin -u root -p'$tempPassword' password '$MYSQL_ROOT_PASSWORD'
 #export<<END
 #spawn passwd 
 #mysql_secure_installation
