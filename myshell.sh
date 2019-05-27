@@ -21,23 +21,23 @@ tempPassword=`cat /var/log/mysqld.log | grep "temporary password"|rev|cut -d ' '
 #`cat /var/log/mysqld.log | grep "temporary password"|rev|cut -d: -f1|rev|sed 's/ //g' | tail -1`
 echo $tempPassword
 export<<END
-spawn passwd mysql_secure_installation
+spawn mysql_secure_installation
 expect "Enter password for user root:"
-send $tempPassword
+send $tempPassword\r
 expect "New password:"
-send $MYSQL_ROOT_PASSWORD
+send $MYSQL_ROOT_PASSWORD\r
 expect "Re-enter new password:"  
-send $MYSQL_ROOT_PASSWORD
+send $MYSQL_ROOT_PASSWORD\r
 expect "Change the password for root ?"
-send "N"
+send "N\r"
 expect "Remove anonymous users? (Press y|Y for Yes, any other key for No) :"
-send "Y"
+send "Y\r"
 expect "Disallow root login remotely? (Press y|Y for Yes, any other key for No) :"
-send "Y"
+send "Y\r"
 expect "Remove test database and access to it? (Press y|Y for Yes, any other key for No) :"
-send "Y"
+send "Y\r"
 expect "Reload privilege tables now? (Press y|Y for Yes, any other key for No) :"
-send "Y"
+send "Y\r"
 END
 echo $?
 
