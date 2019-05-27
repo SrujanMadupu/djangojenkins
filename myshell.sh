@@ -1,8 +1,9 @@
 #! /bin/bash
 
 rootpath=/root/home/srujan/dj
-#yum -y install python36
-#yum -y install python36-pip
+yum -y install python36
+yum -y install python36-pip
+yum -y install python36-devel
 
 MYSQL_ROOT='root'
 MYSQL_ROOT_PASSWORD='Mobigo#123'
