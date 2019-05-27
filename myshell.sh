@@ -6,7 +6,7 @@ yum -y install python36-pip
 yum -y install python36-devel
 
 MYSQL_ROOT='root'
-MYSQL_ROOT_PASSWORD='Mobigo#123'
+MYSQL_ROOT_PASSWORD='5Yf2i<>70!:t' #'Mobigo#123'
 MYSQL_DATABASE='djjenkins'
 # MySQL Setup
 #wget https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
