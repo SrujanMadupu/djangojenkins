@@ -18,6 +18,7 @@ echo "starting mysql server"
 sleep 5
 systemctl start mysqld
 tempPassword=`cat /var/log/mysqld.log | grep "temporary password"|rev|cut -d: -f1|rev|sed 's/ //g' | tail -1`
+echo $tempPassword
 export<<END
 spawn passwd mysql_secure_installation
 expect "Enter password for user root:"
@@ -39,17 +40,17 @@ send "Y\r"
 END
 echo $?
 
-echo "done with mysql installation and root user setup"
-echo "creating database dummy"
-mysql -u $MYSQL_ROOT -p$MYSQL_ROOT_PASSWORD -e "CREATE DATABASE $MYSQL_DATABASE"
-echo $?
-echo "creting virtual environment"
-python3 -m venv  $rootpath/jenk
-echo $?
-echo "Activating virtual env"
-source $rootpath/jenk/bin/activate
-echo $?
-pip3 install -r $rootpath/requirements.txt
-python3 $rootpath/manage.py runserver &
-deactivate
+#echo "done with mysql installation and root user setup"
+#echo "creating database dummy"
+#mysql -u $MYSQL_ROOT -p$MYSQL_ROOT_PASSWORD -e "CREATE DATABASE $MYSQL_DATABASE"
+#echo $?
+#echo "creting virtual environment"
+#python3 -m venv  $rootpath/jenk
+#echo $?
+#echo "Activating virtual env"
+#source $rootpath/jenk/bin/activate
+#echo $?
+#pip3 install -r $rootpath/requirements.txt
+#python3 $rootpath/manage.py runserver &
+#deactivate
 
