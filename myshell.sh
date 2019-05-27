@@ -21,7 +21,8 @@ tempPassword=`cat /var/log/mysqld.log | grep "temporary password"|rev|cut -d ' '
 #`cat /var/log/mysqld.log | grep "temporary password"|rev|cut -d: -f1|rev|sed 's/ //g' | tail -1`
 echo $tempPassword
 export<<END
-spawn mysql_secure_installation
+#spawn passwd 
+mysql_secure_installation
 expect "Enter password for user root:"
 send $tempPassword\r
 expect "New password:"
