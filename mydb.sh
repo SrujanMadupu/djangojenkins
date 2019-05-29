@@ -1,6 +1,6 @@
 #! /bin/bash
 MYSQL_ROOT_PASSWORD="ramesh123"
-MYSQL_DATABASE="dummydb"
+MYSQL_DATABASE="djjenkins"
 SQL_ROOT="root"
 
 
