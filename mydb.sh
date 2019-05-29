@@ -2,7 +2,7 @@
 MYSQL_ROOT_PASSWORD="ramesh123"
 MYSQL_DATABASE="djjenkins"
 SQL_ROOT="root"
-
+firstcommit="firstcommit"
 
 #mysql -u root -p ${MYSQL_ROOT_PASSWORD} -e "CREATE DATABASE ${MYSQL_DATABASE}"
 expect<<END
