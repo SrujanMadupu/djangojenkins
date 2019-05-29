@@ -5,6 +5,8 @@ SQL_ROOT="root"
 firstcommit="firstcommit"
 secondcommit="secondcommit"
 
+tempbranch="t1"
+
 #mysql -u root -p ${MYSQL_ROOT_PASSWORD} -e "CREATE DATABASE ${MYSQL_DATABASE}"
 expect<<END
 spawn passwd $mysql_secure_installation
